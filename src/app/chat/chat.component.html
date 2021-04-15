@@ -1,0 +1,7 @@
+<h1>Hello Socket</h1>
+
+<ul>
+  <li *ngFor="let message of messages">{{ message }}</li>
+</ul>
+<input placeholder="Send a message..." [formControl]="msgControl">
+<button (click)="sendMessage()">Send</button>
