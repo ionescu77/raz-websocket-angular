@@ -27,8 +27,22 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage(): void {
-    this.chatService.send(this.msgControl.value);
+    // this.chatService.send(this.msgControl.value);
+    console.log(this.msgControl.value);
+    var str = this.msgControl.value;
+    console.log(str);
+    var myArr = new Uint8Array(str.length);
+
+    for(var i = 0; i < Object.keys(str).length; i++){
+        // console.log(i);
+        console.log("Index value: "+ i +" has a byte code of: " + str.charCodeAt(i) + " for the char: " + str.charAt(i));
+        this.chatService.send(str.charCodeAt(i));
+        myArr[i] = str.charCodeAt(i);
+    };
+    console.log(myArr);
+    console.log(myArr[1]);
     this.msgControl.setValue('');
+
   }
 
   ngOnDestroy(): void {

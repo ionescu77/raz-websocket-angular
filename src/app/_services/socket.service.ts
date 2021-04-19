@@ -21,6 +21,7 @@ export class SocketService {
   send(data: any): void {
     if (this.connection$) {
       this.connection$.next(data);
+      console.log(data)
     } else {
       console.log('Did not send data, unable to open connection');
     }
