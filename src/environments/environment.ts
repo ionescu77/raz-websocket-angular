@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  socket_endpoint: 'ws://echo.websocket.org/'
+  socket_endpoint: 'ws://192.168.0.122:1515/'
 };
 
 /*
