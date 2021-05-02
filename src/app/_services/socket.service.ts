@@ -13,7 +13,11 @@ export class SocketService {
   constructor() { }
 
   connect(): Observable<any> {
-    this.connection$ = webSocket(`${env.socket_endpoint}`);
+    this.connection$ = webSocket({
+                                url: `${env.socket_endpoint}`,
+                                deserializer: (data) => data,
+                                serializer: (data) => data,
+                                });
     console.log("Successfully connected: " + env.socket_endpoint);
     return this.connection$;
   }
@@ -21,7 +25,7 @@ export class SocketService {
   send(data: any): void {
     if (this.connection$) {
       this.connection$.next(data);
-      console.log(data)
+      console.log("Sending: " + data);
     } else {
       console.log('Did not send data, unable to open connection');
     }
